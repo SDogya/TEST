@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>Reveal.js Mobile Remote MVP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Подключаем стили reveal.js -->
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/blood.css">
+    <style>
+        /* Контейнер для разделения экрана на колонки */
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .col {
+            flex: 1;
+            text-align: left;
+        }
+
+        .col-center {
+            flex: 1;
+            text-align: center;
+        }
+
+        /* Утилиты для текста */
+        .text-small {
+            font-size: 0.6em;
+            line-height: 1.2;
+        }
+
+        .highlight-red {
+            color: #ff2c2d;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>Физика vs Deep Learning: Матрица Сходств</h2>
+                <p style="font-size: 0.6em; color: #888;">"Нейросеть — это просто статистическая физика, у которой есть
+                    цель"</p>
+
+                <div style="display: flex; justify-content: space-between; gap: 20px;">
+
+                    <div style="flex: 1; background: rgba(0, 123, 255, 0.1); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #007bff;">Классическая и Квантовая Физика</h4>
+                        <ul style="font-size: 0.7em; list-style-type: none; margin: 0; padding: 0;">
+                            <li style="margin-bottom: 15px;">
+                                <strong>Принцип наименьшего действия:</strong>
+                                Система минимизирует функционал $S = \int L dt$.
+                            </li>
+                            <li style="margin-bottom: 15px;">
+                                <strong>Гармонический потенциал:</strong>
+                                Пружинка $U = \frac{1}{2}kx^2$ удерживает частицу в яме.
+                            </li>
+                            <li style="margin-bottom: 15px;">
+                                <strong>Статистика Больцмана:</strong>
+                                Вероятность состояния $P \propto e^{-E/kT}$.
+                            </li>
+                            <li style="margin-bottom: 15px;">
+                                <strong>Операторы в Гильбертовом пространстве:</strong>
+                                Матрицы меняют вектор квантового состояния $|\psi\rangle$.
+                            </li>
+                            <li style="margin-bottom: 15px;">
+                                <strong>Ренормализационная группа (RG):</strong>
+                                Отсечение микро-шума для поиска макро-структур.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div style="flex: 1; background: rgba(40, 167, 69, 0.1); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #28a745;">Deep Learning / ML</h4>
+                        <ul style="font-size: 0.7em; list-style-type: none; margin: 0; padding: 0;">
+                            <li style="margin-bottom: 15px;">
+                                <strong>Градиентный спуск:</strong>
+                                Модель минимизирует функцию потерь $L(\theta)$.
+                            </li>
+                            <li style="margin-bottom: 15px;">
+                                <strong>L2 Регуляризация (Weight Decay):</strong>
+                                Штраф $\lambda \sum w^2$ не дает весам разлетаться.
+                            </li>
+                            <li style="margin-bottom: 15px;">
+                                <strong>Softmax & Temperature:</strong>
+                                Распределение вероятностей токенов $P \propto e^{z/T}$.
+                            </li>
+                            <li style="margin-bottom: 15px;">
+                                <strong>Transformer Attention:</strong>
+                                Линейные проекции $W_q, W_k, W_v$ преобразуют эмбеддинги.
+                            </li>
+                            <li style="margin-bottom: 15px;">
+                                <strong>Слои нейросети:</strong>
+                                Иерархическое сжатие признаков от пикселей к смыслам.
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div style="margin-top: 30px; font-size: 0.8em; border-top: 1px solid #555; padding-top: 10px;">
+                    <strong>Общий знаменатель:</strong> Линейная алгебра и оптимизация первого порядка.
+                </div>
+            </section>
+            <!-- ============================================== -->
+            <!-- 1. ТИТУЛЬНЫЙ СЛАЙД                             -->
+            <!-- ============================================== -->
+            <section
+                data-background-image="https://upload.wikimedia.org/wikipedia/commons/c/cf/Artificial_Intelligence_Word_Cloud.png"
+                data-background-size="contain" data-background-opacity="0.7">
+
+                <h1>Machine Learning в Науке</h1>
+                <h3>От классики до глубокого обучения</h3>
+
+
+            </section>
+            <section>
+                <img
+                    src="https://aipp.silverchair-cdn.com/aipp/content_public/journal/apm/4/5/10.1063_1.4946894/4/053208_1_1.4946894.figures.online.f1.jpeg?Expires=1774926327&Signature=r8FoKFkxO1aDpS4qX6XTx-P8LhPuRDJJDu2aAi3zlTaNz7ZwDjOH22T6fwCuSjXUBbs1c7DRVXAlk8sjv4Jx2eXc7EdhEHH01IO4ZBakBBcVscxaigNijHEr9wOCY1GmAXwm6xqZvhKMEXj8dbWNpNqj79mRm1l4NeYfoaRODSHzMRR6BqUST8JkRt~UhUaNSdRoV-O3bdqO2cnsg4qGxLSpNbnYnus6oqZi54xGn46o5yldRbT9F8hj6WkkvtJNJ6mQ72K3oFz2jGE0c0LoN4njF450NWnmatDQbX218kquuqY1YByLEXXaWFXIZgRs3HJ9q1CyjmDndgYri31HZA__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA">
+            </section>
+
+            <section>
+                <h3>Внешняя презентация (PDF)</h3>
+                <iframe
+                    data-src="/home/sdogya/TMP/reveal-mvp/pres/Вадим_Королев_Зимняя_школа_2026_ФИИ_.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                    width="100%" height="500px" style="border: none;">
+                </iframe>
+                <p style="font-size: 0.5em;">Используйте прокрутку внутри фрейма или колесико мыши</p>
+            </section>
+            <!-- ============================================== -->
+            <!-- 2. ОБЗОР ПАРАДИГМ (Горизонтальный переход)     -->
+            <!-- ============================================== -->
+            <section>
+                <h2>Что вообще есть в ML?</h2>
+                <div class="row">
+                    <div class="col">
+                        <ul>
+                            <li><strong>С учителем (Supervised)</strong> — есть $X$ и ответы $y$.</li>
+                            <li><strong>Без учителя (Unsupervised)</strong> — ищем структуру в $X$.</li>
+                            <li><strong>С подкреплением (RL)</strong> — агент, среда, награда.</li>
+                        </ul>
+                    </div>
+                    <div class="col-center">
+                        <!-- Пример вставки GIF-анимации -->
+                        <img src="https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif" alt="ML gif" width="80%">
+                        <p class="text-small">Агент изучает среду</p>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Привет! Это твоя первая шпаргалка на телефоне. Свайпни по экрану или нажми стрелку, чтобы
+                    переключить слайд.
+                </aside>
+            </section>
+
+            <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+                <script type="text/template">
+                    # Физика & ML
+                    Интеграция Markdown работает!
+                    
+                    ---
+                    
+                    ## Слайд 2: Преимущества
+                    * Снижение размерности кода
+                    * Быстрая правка
+                    * Поддержка LaTeX: $E = mc^2$
+                    
+                    ---
+                    
+                    ## Слайд 3: Вертикальный переход
+                    Нажми "Вниз", чтобы увидеть магию.
+                    
+                    --
+                    
+                    Помогите ТКАНЬ ФИБРОЗНА , ПОМОГИТЕ СЛИШКОМ ПОЗДНО !
+                    
+                    ### Это вложенный слайд
+                    Мы спустились по вертикальной оси.
+                </script>
+            </section>
+            <!-- ============================================== -->
+            <!-- 3. КЛАССИКА И РЕГРЕССИЯ (Вложенные слайды)     -->
+            <!-- ============================================== -->
+            <section>
+                <!-- 3.1 Горизонтальный слайд: Теория -->
+                <section>
+                    <h2>Классический ML: Регрессия</h2>
+                    <p>Линейная и нелинейная регрессия. Восстановление зависимостей.</p>
+
+                    <!-- Пример вставки формулы (блочной) -->
+                    <p>Метод наименьших квадратов (МНК):</p>
+                    <p>$$ \hat{\theta} = (X^T X)^{-1} X^T y $$</p>
+
+                    <p class="text-small highlight-red">Нажмите стрелку ВНИЗ для примеров 👇</p>
+                </section>
+
+                <!-- 3.2 Вертикальный слайд: Примеры -->
+                <section>
+                    <h2>Применение: Калибровка детекторов</h2>
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-small">Используем регрессию для перевода АЦП в реальные энергии ($E = mc^2$).
+                            </p>
+                            <!-- Пример вставки Python кода -->
+                            <pre><code class="python" data-trim data-line-numbers="1-2|4-5">
+                            import numpy as np
+                            from sklearn.linear_model import LinearRegression
+
+                            # Обучаем модель на калибровочных пиках
+                            reg = LinearRegression().fit(adc_channels, energies)
+                            </code></pre>
+                        </div>
+                        <div class="col-center">
+                            <!-- Статичная картинка графика -->
+                            <img src="https://via.placeholder.com/400x300.png?text=Spectrum+Plot" alt="График спектра">
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- 4. СЛУЧАЙНЫЙ ЛЕС (Вложенные слайды)            -->
+            <!-- ============================================== -->
+            <section>
+                <!-- 4.1 Теория -->
+                <section>
+                    <h2>Случайный лес (Random Forest)</h2>
+                    <p>Ансамбль деревьев решений. Меньше переобучается, хорош для табличных данных.</p>
+                    <p>$$ \hat{f}(x) = \frac{1}{B} \sum_{b=1}^B T_b(x) $$</p>
+                    <p class="text-small">Скролл вниз к примерам в химии/материаловедении 👇</p>
+                </section>
+
+                <!-- 4.2 Примеры -->
+                <section>
+                    <h2>RF: Предсказание свойств сплавов</h2>
+                    <!-- Пример вставки локального или внешнего ВИДЕО (с автоплеем и зацикливанием) -->
+                    <video data-autoplay loop muted controls width="80%">
+                        <source
+                            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+                            type="video/mp4">
+                    </video>
+                    <p class="text-small">Визуализация разделения пространства признаков деревом решений.</p>
+                </section>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- 5. ПЕРЕХОД К DEEP LEARNING                     -->
+            <!-- ============================================== -->
+            <section>
+                <h2>Deep Learning (DL)</h2>
+                <div class="row">
+                    <div class="col">
+                        <p>Откуда хайп?</p>
+                        <ul>
+                            <li>Больше данных</li>
+                            <li>Мощные GPU</li>
+                            <li>Новые архитектуры (ResNet, Attention)</li>
+                        </ul>
+                    </div>
+                    <div class="col-center">
+                        <p>Искусственный нейрон:</p>
+                        <!-- Внутристрочная формула -->
+                        <p>$ y = \sigma(\sum w_i x_i + b) $</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- 6. НАПРАВЛЕНИЯ DL (CV, NLP, Graphs)            -->
+            <!-- ============================================== -->
+            <!-- Пример для CV, аналогично делаешь для остальных -->
+            <section>
+                <!-- 6.1 Теория CV -->
+                <section>
+                    <h2>Computer Vision (CV)</h2>
+                    <p>Сверточные сети (CNN), Трансформеры (ViT).</p>
+                    <ul>
+                        <li>Классификация (что на картинке?)</li>
+                        <li>Сегментация (где точные границы?)</li>
+                    </ul>
+                    <p class="text-small">Скролл вниз к примерам 👇</p>
+                </section>
+
+                <!-- 6.2 Примеры CV -->
+                <section>
+                    <h2>CV: Анализ треков частиц</h2>
+                    <div class="row">
+                        <div class="col-center">
+                            <img src="https://via.placeholder.com/300x300.png?text=Raw+Data" alt="Сырые данные">
+                            <p class="text-small">Снимок камеры</p>
+                        </div>
+                        <div class="col-center">
+                            <!-- Эмодзи стрелочки -->
+                            <h1>➡️</h1>
+                        </div>
+                        <div class="col-center">
+                            <img src="https://via.placeholder.com/300x300.png?text=Segmented" alt="Сегментация">
+                            <p class="text-small">Сегментация трека</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- 7. REINFORCEMENT LEARNING                      -->
+            <!-- ============================================== -->
+            <section>
+                <h2>Обучение с подкреплением (RL)</h2>
+                <p>Управление плазмой в Токамаке, оптимизация экспериментов.</p>
+                <div class="row">
+                    <div class="col">
+                        <p class="text-small">Уравнение Беллмана:</p>
+                        <p class="text-small">$$ V(s) = \max_a \left( R(s,a) + \gamma \sum_{s'} P(s'|s,a) V(s') \right)
+                            $$</p>
+                    </div>
+                    <div class="col-center">
+                        <img src="https://media.giphy.com/media/3o7TksxbgOEECcuuuE/giphy.gif" alt="RL control"
+                            width="100%">
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+
+    <!-- Основные скрипты reveal.js -->
+    <script src="node_modules/reveal.js/dist/reveal.js"></script>
+    <script src="node_modules/reveal.js/plugin/notes/notes.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/math/math.min.js"></script>
+    <!-- Плагин для подсветки кода -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/markdown/markdown.min.js"></script>
+
+    <!-- Скрипты для связи телефона и компа -->
+    <script src="socket.io/socket.io.js"></script>
+    <script src="node_modules/reveal-notes-server/client.js"></script>
+
+    <script>
+        // Инициализация
+        Reveal.initialize({
+            hash: true,
+            controls: true,       // Кнопки навигации в правом нижнем углу
+            progress: true,       // Полоса прогресса внизу
+            center: true,         // Вертикальное центрирование слайдов
+            hash: true,           // Сохранять слайд в URL (чтобы можно было обновить страницу)
+            transition: 'slide',  // Тип анимации: none/fade/slide/convex/concave/zoom
+            width: 1920,
+            height: 1080,
+
+            // Factor of the display size that should remain empty around
+            // the content
+            margin: 0.04,
+
+            // Bounds for smallest/largest possible scale to apply to content
+            minScale: 0.2,
+            maxScale: 2.0,
+
+            katex: {
+                version: 'latest',
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },  // Блочные формулы
+                    { left: '$', right: '$', display: false },   // Строчные формулы
+                    { left: '\\(', right: '\\)', display: false },
+                    { left: '\\[', right: '\\]', display: true }
+                ],
+                ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+
+            plugins: [RevealMath.KaTeX, RevealHighlight, RevealNotes, RevealMarkdown]
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>ML и DL в Физике: Обзорный семинар</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Подключаем стили reveal.js из CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/night.min.css" id="theme">
+
+    <!-- Подсветка кода (Monokai) -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/monokai.min.css">
+
+    <!-- Твои кастомные стили для компановки кадров -->
+    <style>
+        /* Контейнер для разделения экрана на колонки */
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .col {
+            flex: 1;
+            text-align: left;
+        }
+
+        .col-center {
+            flex: 1;
+            text-align: center;
+        }
+
+        /* Утилиты для текста */
+        .text-small {
+            font-size: 0.6em;
+            line-height: 1.2;
+        }
+
+        .highlight-red {
+            color: #ff2c2d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- ============================================== -->
+            <!-- 1. ТИТУЛЬНЫЙ СЛАЙД                             -->
+            <!-- ============================================== -->
+            <section>
+                <h1>Machine Learning в Науке</h1>
+                <h3>От классики до глубокого обучения</h3>
+                <p><small>Твое Имя / Лаборатория</small></p>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- 2. ОБЗОР ПАРАДИГМ (Горизонтальный переход)     -->
+            <!-- ============================================== -->
+            <section>
+                <h2>Что вообще есть в ML?</h2>
+                <div class="row">
+                    <div class="col">
+                        <ul>
+                            <li><strong>С учителем (Supervised)</strong> — есть $X$ и ответы $y$.</li>
+                            <li><strong>Без учителя (Unsupervised)</strong> — ищем структуру в $X$.</li>
+                            <li><strong>С подкреплением (RL)</strong> — агент, среда, награда.</li>
+                        </ul>
+                    </div>
+                    <div class="col-center">
+                        <!-- Пример вставки GIF-анимации -->
+                        <img src="https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif" alt="ML gif" width="80%">
+                        <p class="text-small">Агент изучает среду</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- 3. КЛАССИКА И РЕГРЕССИЯ (Вложенные слайды)     -->
+            <!-- ============================================== -->
+            <section>
+                <!-- 3.1 Горизонтальный слайд: Теория -->
+                <section>
+                    <h2>Классический ML: Регрессия</h2>
+                    <p>Линейная и нелинейная регрессия. Восстановление зависимостей.</p>
+
+                    <!-- Пример вставки формулы (блочной) -->
+                    <p>Метод наименьших квадратов (МНК):</p>
+                    <p>$$ \hat{\theta} = (X^T X)^{-1} X^T y $$</p>
+
+                    <p class="text-small highlight-red">Нажмите стрелку ВНИЗ для примеров 👇</p>
+                </section>
+
+                <!-- 3.2 Вертикальный слайд: Примеры -->
+                <section>
+                    <h2>Применение: Калибровка детекторов</h2>
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-small">Используем регрессию для перевода АЦП в реальные энергии ($E = mc^2$).
+                            </p>
+                            <!-- Пример вставки Python кода -->
+                            <pre><code class="python" data-trim data-line-numbers="1-2|4-5">
+                            import numpy as np
+                            from sklearn.linear_model import LinearRegression
+
+                            # Обучаем модель на калибровочных пиках
+                            reg = LinearRegression().fit(adc_channels, energies)
+                            </code></pre>
+                        </div>
+                        <div class="col-center">
+                            <!-- Статичная картинка графика -->
+                            <img src="https://via.placeholder.com/400x300.png?text=Spectrum+Plot" alt="График спектра">
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- 4. СЛУЧАЙНЫЙ ЛЕС (Вложенные слайды)            -->
+            <!-- ============================================== -->
+            <section>
+                <!-- 4.1 Теория -->
+                <section>
+                    <h2>Случайный лес (Random Forest)</h2>
+                    <p>Ансамбль деревьев решений. Меньше переобучается, хорош для табличных данных.</p>
+                    <p>$$ \hat{f}(x) = \frac{1}{B} \sum_{b=1}^B T_b(x) $$</p>
+                    <p class="text-small">Скролл вниз к примерам в химии/материаловедении 👇</p>
+                </section>
+
+                <!-- 4.2 Примеры -->
+                <section>
+                    <h2>RF: Предсказание свойств сплавов</h2>
+                    <!-- Пример вставки локального или внешнего ВИДЕО (с автоплеем и зацикливанием) -->
+                    <video data-autoplay loop muted controls width="80%">
+                        <source
+                            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+                            type="video/mp4">
+                    </video>
+                    <p class="text-small">Визуализация разделения пространства признаков деревом решений.</p>
+                </section>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- 5. ПЕРЕХОД К DEEP LEARNING                     -->
+            <!-- ============================================== -->
+            <section>
+                <h2>Deep Learning (DL)</h2>
+                <div class="row">
+                    <div class="col">
+                        <p>Откуда хайп?</p>
+                        <ul>
+                            <li>Больше данных</li>
+                            <li>Мощные GPU</li>
+                            <li>Новые архитектуры (ResNet, Attention)</li>
+                        </ul>
+                    </div>
+                    <div class="col-center">
+                        <p>Искусственный нейрон:</p>
+                        <!-- Внутристрочная формула -->
+                        <p>$ y = \sigma(\sum w_i x_i + b) $</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- 6. НАПРАВЛЕНИЯ DL (CV, NLP, Graphs)            -->
+            <!-- ============================================== -->
+            <!-- Пример для CV, аналогично делаешь для остальных -->
+            <section>
+                <!-- 6.1 Теория CV -->
+                <section>
+                    <h2>Computer Vision (CV)</h2>
+                    <p>Сверточные сети (CNN), Трансформеры (ViT).</p>
+                    <ul>
+                        <li>Классификация (что на картинке?)</li>
+                        <li>Сегментация (где точные границы?)</li>
+                    </ul>
+                    <p class="text-small">Скролл вниз к примерам 👇</p>
+                </section>
+
+                <!-- 6.2 Примеры CV -->
+                <section>
+                    <h2>CV: Анализ треков частиц</h2>
+                    <div class="row">
+                        <div class="col-center">
+                            <img src="https://via.placeholder.com/300x300.png?text=Raw+Data" alt="Сырые данные">
+                            <p class="text-small">Снимок камеры</p>
+                        </div>
+                        <div class="col-center">
+                            <!-- Эмодзи стрелочки -->
+                            <h1>➡️</h1>
+                        </div>
+                        <div class="col-center">
+                            <img src="https://via.placeholder.com/300x300.png?text=Segmented" alt="Сегментация">
+                            <p class="text-small">Сегментация трека</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- 7. REINFORCEMENT LEARNING                      -->
+            <!-- ============================================== -->
+            <section>
+                <h2>Обучение с подкреплением (RL)</h2>
+                <p>Управление плазмой в Токамаке, оптимизация экспериментов.</p>
+                <div class="row">
+                    <div class="col">
+                        <p class="text-small">Уравнение Беллмана:</p>
+                        <p class="text-small">$$ V(s) = \max_a \left( R(s,a) + \gamma \sum_{s'} P(s'|s,a) V(s') \right)
+                            $$</p>
+                    </div>
+                    <div class="col-center">
+                        <img src="https://media.giphy.com/media/3o7TksxbgOEECcuuuE/giphy.gif" alt="RL control"
+                            width="100%">
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Подключаем скрипты reveal.js и плагины -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <!-- Плагин для формул LaTeX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/math/math.min.js"></script>
+    <!-- Плагин для подсветки кода -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+
+    <script>
+        Reveal.initialize({
+            controls: true,       // Кнопки навигации в правом нижнем углу
+            progress: true,       // Полоса прогресса внизу
+            center: true,         // Вертикальное центрирование слайдов
+            hash: true,           // Сохранять слайд в URL (чтобы можно было обновить страницу)
+            transition: 'slide',  // Тип анимации: none/fade/slide/convex/concave/zoom
+            width: 1920,
+            height: 1080,
+
+            // Factor of the display size that should remain empty around
+            // the content
+            margin: 0.04,
+
+            // Bounds for smallest/largest possible scale to apply to content
+            minScale: 0.2,
+            maxScale: 2.0,
+            // Настройка плагина для формул (используем KaTeX для быстроты и красоты)
+            katex: {
+                version: 'latest',
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },  // Блочные формулы
+                    { left: '$', right: '$', display: false },   // Строчные формулы
+                    { left: '\\(', right: '\\)', display: false },
+                    { left: '\\[', right: '\\]', display: true }
+                ],
+                ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+
+            plugins: [RevealMath.KaTeX, RevealHighlight]
+        });
+    </script>
+</body>
+
+</html>
